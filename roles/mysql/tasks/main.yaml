@@ -5,20 +5,20 @@
 #       - botocore
 #     executable: pip3.9
 
-  - name: Install boto3 and botocore for Python 3.9
-    ansible.builtin.pip:
-        name:
-          - boto3
-          - botocore
-        executable: /usr/bin/pip3.9
+- name: Install boto3 and botocore for Python 3.9
+  ansible.builtin.pip:
+    name:
+    - boto3
+    - botocore
+    executable: /usr/bin/pip3.9
 
-# - name: Install MySQL libraries
-#   ansible.builtin.pip:
-#     name: "{{ item }}"
-#     executable: pip3.9
-#   loop:
-#   - cryptography
-#   - PyMySQL
+- name: Install MySQL libraries
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    executable: pip3.9
+  loop:
+  - cryptography
+  - PyMySQL
 
 - name: Install MySQL server
   ansible.builtin.package:
