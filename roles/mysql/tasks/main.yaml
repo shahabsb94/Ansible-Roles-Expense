@@ -1,16 +1,24 @@
-- name: Ensure pip for Python 3 is installed
-  become: yes
-  ansible.builtin.command: /usr/bin/python3 -m ensurepip --upgrade
+# - name: Ensure pip for Python 3 is installed
+#   become: yes
+#   ansible.builtin.command: /usr/bin/python3 -m ensurepip --upgrade
+
+# - name: Install MySQL libraries
+#   ansible.builtin.pip:
+#     name: "{{ item }}"
+#     executable: /usr/bin/pip3
+#   loop:
+#   - cryptography
+#   - PyMySQL
+#   - botocore
+#   - boto3
 
 - name: Install MySQL libraries
   ansible.builtin.pip:
     name: "{{ item }}"
-    executable: /usr/bin/pip3
+    executable: pip3.9
   loop:
   - cryptography
   - PyMySQL
-  - botocore
-  - boto3
 
 - name: Install MySQL server
   ansible.builtin.package:
