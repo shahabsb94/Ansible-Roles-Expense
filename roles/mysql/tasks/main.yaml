@@ -1,17 +1,31 @@
-- name: Install boto3 and botocore (required for MySQL modules)
+# - name: Install boto3 and botocore (required for MySQL modules)
+#   ansible.builtin.pip:
+#     name:
+#       - boto3
+#       - botocore
+#     executable: pip3.9
+
+- name: Force Python3 interpreter
+  set_fact:
+    ansible_python_interpreter: /usr/bin/python3
+
+- name: Install required Python libraries
   ansible.builtin.pip:
     name:
       - boto3
       - botocore
-    executable: pip3.9
+      - PyMySQL
+      - cryptography
+    executable: /usr/bin/pip3
 
-- name: Install MySQL libraries
-  ansible.builtin.pip:
-    name: "{{ item }}"
-    executable: pip3.9
-  loop:
-  - cryptography
-  - PyMySQL
+
+# - name: Install MySQL libraries
+#   ansible.builtin.pip:
+#     name: "{{ item }}"
+#     executable: pip3.9
+#   loop:
+#   - cryptography
+#   - PyMySQL
 
 - name: Install MySQL server
   ansible.builtin.package:
