@@ -5,19 +5,12 @@
 #       - botocore
 #     executable: pip3.9
 
-- name: Force Python3 interpreter
-  set_fact:
-    ansible_python_interpreter: /usr/bin/python3
-
-- name: Install required Python libraries
-  ansible.builtin.pip:
-    name:
-      - boto3
-      - botocore
-      - PyMySQL
-      - cryptography
-    executable: /usr/bin/pip3
-
+  - name: Install boto3 and botocore for Python 3.9
+    ansible.builtin.pip:
+        name:
+          - boto3
+          - botocore
+        executable: /usr/bin/pip3.9
 
 # - name: Install MySQL libraries
 #   ansible.builtin.pip:
