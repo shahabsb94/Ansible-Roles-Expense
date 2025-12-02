@@ -3,7 +3,7 @@
     name:
       - boto3
       - botocore
-    executable: pip3.9
+    executable: pip3
 
 - name: Install MySQL libraries
   ansible.builtin.pip:
