@@ -1,7 +1,11 @@
+- name: Ensure pip for Python 3 is installed
+  become: yes
+  ansible.builtin.command: /usr/bin/python3 -m ensurepip --upgrade
+
 - name: Install MySQL libraries
   ansible.builtin.pip:
     name: "{{ item }}"
-    executable: pip3.9
+    executable: /usr/bin/pip3
   loop:
   - cryptography
   - PyMySQL
